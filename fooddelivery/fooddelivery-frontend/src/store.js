@@ -9,6 +9,7 @@ import { restaurantReducer } from "./reducers/restaurantReducer";
 import { menuReducer } from "./reducers/menuReducer";
 import { cartReducer } from "./reducers/cartReducer";
 import { authReducer, forgetPasswordReducer,userReducer } from "./reducers/userReducer";
+import { myOrdersReducer, newOrderReducer, orderDetailReducer } from "./reducers/orderReducer";
 
 const reducer = combineReducers({
     restaurants: restaurantReducer,
@@ -17,6 +18,10 @@ const reducer = combineReducers({
     auth:authReducer,
     user:userReducer,
     forgotPassword:forgetPasswordReducer,
+    newOrder:newOrderReducer,
+    myOrder:myOrdersReducer,
+    orderDetails:orderDetailReducer,
+    
 
 
 });

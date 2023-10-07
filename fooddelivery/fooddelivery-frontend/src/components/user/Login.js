@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Loader from '../layout/Loader'
 import { login,clearErrors } from '../../actions/userAction'
 import { useAlert } from 'react-alert'
@@ -7,12 +7,20 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
 const Login = () => {
-    
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
     const alert = useAlert()
     const dispatch = useDispatch()
-    const {isAuthenticated,loading} = useSelector((state)=>state.auth)
+    const {isAuthenticated,loading,error} = useSelector((state)=>state.auth)
+    useEffect(()=>{
+        if(isAuthenticated){
+            window.location.href = '/'
+        }
+        if(error){
+            alert.error(error)
+            dispatch(clearErrors());
+        }
+    },[dispatch,error,alert,isAuthenticated])
     const submitHandler =(e) =>{
         e.preventDefault()
         dispatch(login(email,password)).then(()=>{

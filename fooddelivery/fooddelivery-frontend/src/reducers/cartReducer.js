@@ -1,4 +1,4 @@
-import { ADD_TO_CART, CLEAR_CART, REMOVE_ITEM_CART, SAVE_DELIVERY_INFO, UPDDATE_CART_QUANTITY } from "../constants/cartConstant";
+import { ADD_TO_CART, CLEAR_CART, REMOVE_ITEM_CART, SAVE_DELIVERY_INFO, SET_RESTAURANT_ID, UPDDATE_CART_QUANTITY } from "../constants/cartConstant";
 
 const initialState = {
     cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")):[]
@@ -48,7 +48,12 @@ export const cartReducer = (state=initialState,action)=>{
             return{
                 ...state,
                 cartItems:[]
-            }    
+            } 
+        case SET_RESTAURANT_ID:
+            return{
+                ...state,
+                restaurant:action.payload
+            }       
         default:
             return state    
     }

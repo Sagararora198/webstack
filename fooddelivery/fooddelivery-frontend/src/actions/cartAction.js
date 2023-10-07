@@ -1,5 +1,5 @@
 import axios from "axios"
-import { ADD_TO_CART, CLEAR_CART, REMOVE_ITEM_CART, SAVE_DELIVERY_INFO, UPDATE_DELIVERY_INFO, UPDDATE_CART_QUANTITY } from "../constants/cartConstant";
+import { ADD_TO_CART, CLEAR_CART, REMOVE_ITEM_CART, SAVE_DELIVERY_INFO, SET_RESTAURANT_ID, UPDATE_DELIVERY_INFO, UPDDATE_CART_QUANTITY } from "../constants/cartConstant";
 
 export const addItemToCart = (id,quantity)=> async(dispatch,getState)=>{
     try{
@@ -49,26 +49,11 @@ export const clearCart = ()=> async(dispatch)=>{
     localStorage.removeItem("cartItmes")
 }
 
-export const saveDeliveryInfo = (deliveryInfo)=>(dispatch,getState)=>{
-    try{
-        const existingDeliveryInfo = getState().cart.deliveryInfo;
-        if(existingDeliveryInfo){
-            dispatch({
-                type: UPDATE_DELIVERY_INFO,
-                payload:deliveryInfo,
-            })
-
-        }
-        else{
-            dispatch({
-                type:SAVE_DELIVERY_INFO,
-                payload:deliveryInfo
-            })
-        }
-    }
-    catch(error){
-
-    }
+export const saveDeliveryInfo = (deliveryInfo)=>(dispatch)=>{
+    dispatch({
+        type:SAVE_DELIVERY_INFO,
+        payload:deliveryInfo
+    })
     
 
 };
@@ -83,4 +68,11 @@ export const updateDeliveryInfo = (deliveryInfo)=>(dispatch)=>{
     catch(error){
          
     }
+}
+
+export const setRestaurantId = (id) =>{
+ return{
+    type:SET_RESTAURANT_ID,
+    payload:id,
+ }   
 }

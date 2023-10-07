@@ -45,6 +45,7 @@ const submitHandler =(e)=>{
     formData.set("phoneNumber",phoneNumber)
     formData.set("avatar",avatar)
     dispatch(register(formData));
+
 }
 const onChange = (e)=>{
     if(e.target.name==="avatar"){
@@ -67,7 +68,7 @@ const onChange = (e)=>{
         <div className='row wrapper'>
             <div className='col-10 col-lg-5 registration-form'>
                 <form className='shadow-lg' onSubmit={submitHandler} encType='multipart/form-data'>
-                    {/* <h1 className='mb-3'> Register</h1>
+                    <h1 className='mb-3'> Register</h1>
                     <div className='form-group'>
                         <label htmlFor='name_feild'>Name</label>
                         <input type='text' id='name_feild' className='form-control' name='name' value={name} onChange={onChange}></input>
@@ -96,12 +97,12 @@ const onChange = (e)=>{
                                 <img src={avatarPreview} className='rounded-circle' alt='Avatar Preview'></img>
                             </figure>
                         </div>
-                        <div className='custome-file'>
+                        <div className='custom-file'>
                             <input type='file' name='avatar' className='custome-file-input' id='customFile' accept='images/*' onChange={onChange}></input>
-                            <label className='custome-file-label' htmlFor='customeFile'> Choose Avatar</label>
+                            <label className='custom-file-label' htmlFor='customFile'> Choose Avatar</label>
                         </div>
                     </div>
-                    <button id='register_button' type='submit' className='btn btn-block py-3' disabled={loading? true:false}>REGISTER</button> */}
+                    <button id='register_button' type='submit' className='btn btn-block py-3' disabled={loading? true:false}>REGISTER</button>
                 </form>
             </div>
 

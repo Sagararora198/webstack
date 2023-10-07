@@ -10,7 +10,7 @@ const Navbar = () => {
   const {cartItems}  = useSelector((state)=>state.cart)
   const alert = useAlert();
   const dispatch = useDispatch();
-  const {user,loading} = useSelector((state)=>state.cart)
+  const {user,loading} = useSelector((state)=>state.auth)
   const logoutHandler = () =>{
     dispatch(logout());
     alert.success("Logged out successfully")
@@ -52,6 +52,7 @@ const Navbar = () => {
         </span>
         <span className="ml1" id="cart_count">{cartItems.reduce((total, item) => total + item.quantity, 0)}</span>
         </Link>
+
         {user ?(
           <div className="ml-4 dropdown d-inline">
             <Link to='/' className="btn dropdown-toggle text-white mr-4" type="button" id="dropDownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

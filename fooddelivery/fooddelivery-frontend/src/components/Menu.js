@@ -5,9 +5,11 @@ import { useParams } from 'react-router-dom'
 
 import { getRestaurants } from '../actions/restaurantAction'
 import Fooditem from './Fooditem'
+import { setRestaurantId } from '../actions/cartAction'
 const Menu = (storeId) => {
     const { id } = useParams();
     const dispatch = useDispatch();
+    dispatch(setRestaurantId(id));
     const {menus,loaidng,error} = useSelector((state)=>state.menus)
     useEffect(()=>{
         dispatch(getMenus(id));
