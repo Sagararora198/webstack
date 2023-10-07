@@ -6,6 +6,7 @@ import { clearErrors } from '../../reducers/orderReducer';
 import { createOrder } from '../../actions/orderAction';
 import CheckOutStep from './CheckOutStep';
 import axios from 'axios';
+import { useAlert } from 'react-alert';
 
 const option = {
     style:{
@@ -21,6 +22,7 @@ const option = {
 const Payment  = () => {
     const {cartItems,deliveryInfo,restaurant} = useSelector((state)=>state.cart)
     const {user } = useSelector((state)=>state.auth)
+    const alert = useAlert();
     const {error} = useSelector((state)=>state.newOrder);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -43,8 +45,9 @@ const Payment  = () => {
         order.itemsPrice = orderInfo.itemsPrice;
         order.taxPrice = orderInfo.taxPrice;
         order.deliveryPrice = orderInfo.deliveryPrice;
-        order.finalTotal = orderInfo.finalTotal
+        order.finalPrice = orderInfo.finalPrice
     }
+    
     const  paymentData = {
         amount:Math.round(orderInfo.finalTotal*100)
         
@@ -118,7 +121,7 @@ const Payment  = () => {
                         <label htmlFor='card_cvc_field'> Card CVC</label>
                         <CardCvcElement type="text" id="card_cvc_field" className="form-control" options={option}/>
                     </div>
-                    <button id='pay_btn' type='submit' className='btn btn-block py-3'>Pay {`- ${orderInfo && orderInfo.finalTotal}`}</button>
+                    <button id='pay_btn' type='submit' className='btn btn-block py-3'>Pay {`- ${orderInfo && orderInfo.finalPrice}`}</button>
                     
                 </form>
             </div>

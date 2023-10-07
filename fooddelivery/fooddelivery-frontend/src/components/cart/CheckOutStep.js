@@ -6,7 +6,7 @@ const CheckOutStep = ({delivery,confirmOrder,payment}) => {
     return (
     <div className='checkout-progress d-flex justify-content-center mt-5'>
         {delivery ?(
-            <Link to='shipping' className='float-right'>
+            <Link to='/delivery' className='float-right'>
                 <div className='triangle2-active'></div>
                 <div className='step active-step'>Address</div>
                 <div className='triangle-active'></div>
@@ -22,7 +22,7 @@ const CheckOutStep = ({delivery,confirmOrder,payment}) => {
 
 
         {confirmOrder ?(
-            <Link to='/order/confirm' className='float-right'>
+            <Link to='/confirm' className='float-right'>
                 <div className='triangle2-active'></div>
                 <div className='step active-step'>Comfirm Order</div>
                 <div className='triangle-active'></div>
